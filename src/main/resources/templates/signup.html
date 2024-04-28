@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+</head>
+<body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div th:replace="~{fragments/error :: error}"></div>
+  <h1>Registrace</h1>
+  <div class='contentContainer'>
+    <div class='content'>
+      <div class='form'>
+        <form method='post' th:action='@{/save-user}' th:object='${signupform}'>
+          <label for='login'>Login</label>
+          <input id='login' placeholder='Login' th:field='*{login}' type='text' required/>
+          <p class='alert' th:errors='*{login}' th:if="${#fields.hasErrors('login')}"></p>
+          <label for='password'>Heslo</label>
+          <input class='form-control' id='password' placeholder='Heslo' th:field='*{password}' type='password' required/>
+          <p class='alert' th:errors='*{password}' th:if="${#fields.hasErrors('password')}"></p>
+          <label for='passwordCheck'>Heslo znovu</label>
+          <input id='passwordCheck' placeholder='Heslo znovu' th:field='*{passwordCheck}' type='password' required/>
+          <p class='alert' th:errors='*{passwordCheck}' th:if="${#fields.hasErrors('passwordCheck')}"></p>
+          <input type='submit' value='Registrovat' class='submit'/>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div th:replace="~{fragments/error :: error}"></div>
+<h1>Změna hesla</h1>
+<div class='contentContainer'>
+  <div class='content'>
+    <div class='form'>
+      <form method='post' th:action="@{/passChng}" th:object="${changepassform}">
+        <label for='passwordOld'>Stávající heslo:  </label>
+        <input type='password' name='passwordOld' id='passwordOld' required><br>
+        <label for='password'>Nové heslo:  </label>
+        <input type='password' name='password' id='password' required><br>
+        <label for='passwordRep'>Nové heslo znovu:  </label>
+        <input type='password' name='passwordRep' id='passwordRep' required><br>
+        <input type='submit' value='Změnit heslo' class='submit'>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

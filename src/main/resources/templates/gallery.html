@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div th:replace="~{fragments/error :: error}"></div>
+    <h1>Fotogalerie</h1>
+    <div class="contentContainer">
+        <div class="content">
+            <img th:each="image:${images}" class="gallery" th:src="@{'/img/' + ${image.getName()}}" th:alt="${image.getAlt()}" th:title="${image.getAlt()}">
+        </div>
+    </div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

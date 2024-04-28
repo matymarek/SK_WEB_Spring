@@ -1,0 +1,26 @@
+<nav th:fragment="navbar">
+    <ul class="navbar"  sec:authorize="isAnonymous()">
+        <li><a class="navbar" href="/">Domů</a></li>
+        <li><a class="navbar" href="/posts">Příspěvky</a></li>
+        <li><a class="navbar" href="/gallery">Fotogalerie</a></li>
+        <li><a class="navbar" href="/about">O nás</a></li>
+        <li><a class="navbar" href="/login">Přihlásit</a></li>
+        <li><a class="navbar" href="../signup">Registrovat</a></li>
+    </ul>
+    <ul class="navbar" sec:authorize="isAuthenticated()&&hasRole('USER')">
+        <li><a class="navbar" href="/">Domů</a></li>
+        <li><a class="navbar" href="/posts">Příspěvky</a></li>
+        <li><a class="navbar" href="/gallery">Fotogalerie</a></li>
+        <li><a class="navbar" href="/about">O nás</a></li>
+        <li><a class="navbar" href="/editPass" sec:authentication="name"></a></li>
+        <li><a class="navbar" href="/logout">Odhlásit</a></li>
+    </ul>
+    <ul class="navbar" sec:authorize="isAuthenticated()&&hasRole('ADMIN')">
+        <li><a class="navbar" href="/">Domů</a></li>
+        <li><a class="navbar" href="/posts">Příspěvky</a></li>
+        <li><a class="navbar" href="/gallery">Fotogalerie</a></li>
+        <li><a class="navbar" href="/about">O nás</a></li>
+        <li><a class="navbar" href="/editWeb"  sec:authentication="name"></a></li>
+        <li><a class="navbar" href="/logout">Odhlásit</a></li>
+    </ul>
+</nav>

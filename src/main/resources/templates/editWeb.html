@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div th:replace="~{fragments/error :: error}"></div>
+    <h1>Úprava webu</h1>
+    <div class='contentContainer'>
+        <div class='content' id='leftContent'>
+            <div class='admin'>
+                <h2>Nový příspěvek</h2>
+                <div class='form'>
+                    <form method='post' id='newPost' th:action="@{/save-post}" th:object="${newpostform}">
+                        <label for='title'>Nadpis:  </label><br>
+                        <input type='text' name='title' id='title' required><br>
+                        <label for='content'>Text:  </label><br>
+                        <textarea form='newPost' name='content' id='content'></textarea><br>
+                        <input type='hidden' name='action' value='newPost'>
+                        <input type='submit' value='Přidat' class='submit'>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class='content' id='rightContent'>
+            <div class='admin' id='chngPassContainer'>
+                <h2>Změna hesla</h2>
+                <div class='form'>
+                    <form method='post' th:action="@{/passChng}" th:object="${changepassform}">
+                        <label for='passwordOld'>Stávající heslo:  </label>
+                        <input type='password' name='passwordOld' id='passwordOld' required><br>
+                        <label for='password'>Nové heslo:  </label>
+                        <input type='password' name='password' id='password' required><br>
+                        <label for='passwordRep'>Nové heslo znovu:  </label>
+                        <input type='password' name='passwordRep' id='passwordRep' required><br>
+                        <input type='submit' value='Změnit heslo' class='submit'>
+                    </form>
+                </div>
+            </div>
+            <div class='admin'>
+                <h2>Nová fotografie</h2>
+                <div class='form'>
+                    <form method='post' enctype='multipart/form-data' th:action="@{/save-image}" th:object="${newimageform}">
+                        <label for='image'>Vyberte nebo přetáhněte fotografii zde:</label><br>
+                        <input type='file' name='image' id='image' accept='image/*' required><br>
+                        <label for='alt'>Přidejte krátký popis fotografie:</label><br>
+                        <input type='text' name='alt' id='alt' required><br>
+                        <input type='submit' value='Nahrát' class='submit'>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
